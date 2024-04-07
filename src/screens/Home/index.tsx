@@ -8,7 +8,7 @@ import axios from "axios";
 import { ListItem } from "./components/ListItem";
 
 export function Home() {
-  const notifyErr = (err) => toast.error(err);
+  const notifyErr = (err: any) => toast.error(err);
   const [data, setData] = useState([]);
   const [inputData, setInputData] = useState('');
   const token = localStorage.getItem('token');
@@ -26,7 +26,7 @@ export function Home() {
       );
       setData(response?.data);
     } catch (err) {
-      notifyErr("Erro buscar transações. Tente novamente.");
+      notifyErr("Erro buscar tarefas. Tente novamente.");
     }
   }
 
@@ -53,7 +53,7 @@ export function Home() {
       );
       if (response?.status === 201) {
         setInputData('');
-        window.location.reload(false);
+        window.location.reload();
       }
     } catch (err) {
       notifyErr('Erro ao logar, tente novamente')
@@ -92,11 +92,11 @@ export function Home() {
           </Styled.ListTasks>
         </>
       ) : (
-        <Styled.EmptyTransactions>
+        <Styled.EmptyTask>
           <Styled.Title>
             Voce ainda não possui tarefas
           </Styled.Title>
-        </Styled.EmptyTransactions>
+        </Styled.EmptyTask>
       )}
       <ToastContainer
         position="top-right"

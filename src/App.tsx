@@ -34,7 +34,6 @@ function App() {
   return (
     <>
       <Routes>
-        {console.log('useer', user)}
         <Route path="/" element={<Logged Item={Login} />} />
         <Route path="*" element={<Logged Item={Login} />} />
         <Route path="/signup" element={<SignUp />} />

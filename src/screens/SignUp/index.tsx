@@ -13,11 +13,11 @@ export function SignUp() {
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
 
-  const notifyErr = (err) => toast.error(err);
+  const notifyErr = (err: any) => toast.error(err);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: any) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
 
@@ -54,8 +54,7 @@ export function SignUp() {
       if (response?.status === 201) {
         await handleGoLogin();
       }
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
       if (!err?.response) {
         notifyErr('Erro ao acessar o servidor')
       } else if (err?.response?.status === 400) {

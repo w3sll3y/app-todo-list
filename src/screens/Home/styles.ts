@@ -31,7 +31,7 @@ export const InputType = styled.input`
   width: 80%;
   padding: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #b2bec3;
+  background-color: #dfe6e9;
   border: none;
   border-radius: 5px;
 
@@ -49,7 +49,7 @@ export const SendButton = styled.button`
   background-color: #00b894;
 `;
 
-export const EmptyTransactions = styled.div``;
+export const EmptyTask = styled.div``;
 
 export const ListTasks = styled.div`
   margin-top: 25px;

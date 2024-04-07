@@ -1,15 +1,20 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 
 import * as Styled from './styles';
-import useAuth from "../../../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+type DataProps = {
+  id?: number | string | any,
+  name?: string,
+  email?: string
+}
+
 export function Header() {
 
-  const notifyErr = (err) => toast.error(err);
-  const [data, setData] = useState();
+  const notifyErr = (err: any) => toast.error(err);
+  const [data, setData] = useState<DataProps>();
   const token = localStorage.getItem('token');
 
   async function getTasks() {
@@ -26,7 +31,7 @@ export function Header() {
       const id = response?.data?.id;
       localStorage.setItem('id', JSON.stringify({ id }));
     } catch (err) {
-      notifyErr("Erro buscar transações. Tente novamente.");
+      notifyErr("Erro buscar dados de usuario. Tente novamente.");
     }
   }
   useEffect(() => {
@@ -41,7 +46,7 @@ export function Header() {
   const handleLoggout = async () => {
     localStorage.removeItem('token');
     await handleGoLogin();
-    window.location.reload(false);
+    window.location.reload();
   };
 
   return (

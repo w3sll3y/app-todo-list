@@ -5,9 +5,15 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import * as Styled from './styles';
 
-export function ListItem(props) {
-  const notifyErr = (err) => toast.error(err);
-  const [statusChild, setStatusChild] = useState(props.status);
+type TaskProps = {
+  id?: number | string | any,
+  title: string,
+  status: boolean
+}
+
+export function ListItem(Task: TaskProps) {
+  const notifyErr = (err: any) => toast.error(err);
+  const [statusChild, setStatusChild] = useState(Task.status);
   const token = localStorage.getItem('token');
 
   async function handleUpdateStatus(id: number, status: boolean) {
@@ -42,17 +48,17 @@ export function ListItem(props) {
     } catch (err) {
       notifyErr("Erro buscar. Tente novamente.");
     }
-    window.location.reload(false);
+    window.location.reload();
   }
 
   return (
-    <Styled.Container>
+    <Styled.Container status={statusChild}>
       <Styled.TitleContainer status={statusChild}>
-        {props?.title}
+        {Task?.title}
       </Styled.TitleContainer>
       <Styled.CheckboxContainer>
-        <Checkbox onChange={() => handleUpdateStatus(props?.id, statusChild)} checked={statusChild} />
-        <Styled.ButtonDelete onClick={() => handleDelete(props?.id)}>
+        <Checkbox onChange={() => handleUpdateStatus(Task?.id, statusChild)} checked={statusChild} />
+        <Styled.ButtonDelete onClick={() => handleDelete(Task?.id)}>
           <DeleteIcon htmlColor='#ff7675' />
         </Styled.ButtonDelete>
       </Styled.CheckboxContainer>

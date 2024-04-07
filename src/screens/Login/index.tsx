@@ -12,10 +12,10 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
 
-  const notifyErr = (err) => toast.error(err);
+  const notifyErr = (err: any) => toast.error(err);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: any) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
 
@@ -47,9 +47,9 @@ export function Login() {
         const token = response?.data?.access_token;
         localStorage.setItem('token', JSON.stringify({ token }));
         await handleGoHome();
-        window.location.reload(false);
+        window.location.reload();
       }
-    } catch (err) {
+    } catch (err: any) {
       if (!err?.response) {
         notifyErr('Erro ao logar, tente novamente')
       } else if (err?.response?.status === 401) {

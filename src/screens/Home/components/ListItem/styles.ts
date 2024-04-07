@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ status: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 25px;
   position: relative;
   margin: 5px;
-  background-color: #b2bec3;
+  background-color: ${(props) => (props.status ? '#55efc4' : '#dfe6e9')};
 
   border-radius: 10px;
 `;
