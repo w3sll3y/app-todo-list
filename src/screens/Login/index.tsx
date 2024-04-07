@@ -47,7 +47,7 @@ export function Login() {
         const token = response?.data?.access_token;
         localStorage.setItem('token', JSON.stringify({ token }));
         await handleGoHome();
-        window.location.reload;
+        window.location.reload(false);
       }
     } catch (err) {
       if (!err?.response) {
