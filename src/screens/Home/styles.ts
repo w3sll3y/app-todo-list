@@ -27,7 +27,7 @@ export const ContaninerInputType = styled.div`
 
 export const InputType = styled.input`
   margin-bottom: 2%;
-  color: #000;
+  color:#2d3436;
   width: 80%;
   padding: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;

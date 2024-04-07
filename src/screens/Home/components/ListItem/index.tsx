@@ -47,7 +47,7 @@ export function ListItem(props) {
 
   return (
     <Styled.Container>
-      <Styled.TitleContainer>
+      <Styled.TitleContainer status={statusChild}>
         {props?.title}
       </Styled.TitleContainer>
       <Styled.CheckboxContainer>

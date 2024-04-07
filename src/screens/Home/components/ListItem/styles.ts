@@ -14,7 +14,9 @@ export const Container = styled.div`
   border-radius: 10px;
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.div<{ status: boolean }>`
+  color: #2d3436;
+  text-decoration: ${(props) => (props.status ? 'line-through' : 'none')};
 `;
 
 export const CheckboxContainer = styled.div`

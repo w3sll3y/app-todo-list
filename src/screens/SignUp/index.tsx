@@ -55,10 +55,15 @@ export function SignUp() {
         await handleGoLogin();
       }
     } catch (err) {
+      console.log(err)
       if (!err?.response) {
         notifyErr('Erro ao acessar o servidor')
+      } else if (err?.response?.status === 400) {
+        notifyErr('A senha deve conter entre 4 e 20 caracteres. Com letra maiúscula e minúscula e ao menos um caractere especial.')
       } else if (err?.response?.status === 401) {
         notifyErr('Usuario ou senha invalidos')
+      } else if (err?.response?.status === 500) {
+        notifyErr('E-mail já cadastrado')
       }
     }
   };
